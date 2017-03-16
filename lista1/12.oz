@@ -1,0 +1,21 @@
+declare
+   fun {Merge L1 L2 L3}
+      fun {M Xs Ys}
+	 case Xs # Ys
+	 of nil # Ys then Ys
+	 [] Xs # nil then Xs
+	 [] (X|Xr) # (Y|Yr) then
+	    if X<Y then X|{M Xr Ys}
+	    else Y|{M Xs Yr} end
+	 end
+      end
+   in
+      {M L1 {M L2 L3}}
+   end
+
+declare 
+L1 = [1 5 6]
+L2 = [3 7 9]
+L3 = [2 4 8]
+
+{Browse {Merge L1 L2 L3}}
