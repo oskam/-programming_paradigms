@@ -1,0 +1,18 @@
+% fun {Append L1 L2}
+%	case L1
+%	of nil then L2
+%	[] H1|T1 then H1|{Append T1 L2}
+%  	end
+% end
+%
+% fun {Reverse L}
+%	case L 
+%	of nil then nil
+%	[] H|T then {Append {Reverse T} [H]}
+%	end
+% end
+
+declare
+	fun {Append L1 L2}
+		{FoldL L1 fun {$ X Y} X|Y end L2}
+	end

@@ -1,4 +1,7 @@
-declare
+functor
+import
+    Browser(browse:Browse)
+define
     fun {FindAll V T}
        case T
        of leaf then nil
@@ -7,22 +10,30 @@ declare
           else {Append {FindAll V L} {FindAll V R}} end
        end
     end
-
-   Tree = tree(key:d
-	       val:42
-	       left:tree(key:b
-			 val:1
-			 left:tree(key:a
-				   val:42
-				   left:leaf
-				   right:leaf)
-			 right:tree(key:c
-				    val:0
-				    left:leaf
-				    right:leaf))
-	       right:tree(key:e
-			  val:42
-			  left:leaf
-			  right:leaf))
+    Tree
+in
+    Tree = tree(key:'E'
+    	    val:2
+    	    left:tree(key:'B'
+    		      val:1
+    		      left:tree(key:'A'
+    				val:42
+    				left:leaf
+    				right:leaf)
+    		      right:tree(key:'D'
+    				 val:0
+    				 left:tree(key:'C'
+    					   val:42
+    					   left:leaf
+    					   right:leaf)
+    				 right:leaf))
+    	    right:tree(key:'F'
+    		       val:42
+    		       left:leaf
+    		       right:tree(key:'G'
+                       val:42
+                       left:leaf
+                       right:leaf)))
 
    {Browse {FindAll 42 Tree}}
+end
