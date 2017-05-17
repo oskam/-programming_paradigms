@@ -1,0 +1,3 @@
+-module(rotation).
+-export([left_rotation/1]).
+-record(node, {key, value, left = nil, right = nil}).
